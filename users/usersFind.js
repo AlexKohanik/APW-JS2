@@ -14,7 +14,7 @@ const users = require('./users');
 mongoose.connect('mongodb://127.0.0.1:27017/apwDB');
 
 //findUser() function is expendable, you can change up values in the query to obtain different results.
-findUser("Alexander John Kohanik");
+//findUser("Alexander John Kohanik");
 async function findUser(username){
     try{
             //finding scenario with id field of 2
@@ -27,4 +27,4 @@ async function findUser(username){
 }
 
 //exporting find user function to be used elsewhere
-module.exports = findUser();
+module.exports = findUser;

@@ -13,14 +13,14 @@ const users = require('./users');
 //connecting to DB
 mongoose.connect('mongodb://127.0.0.1:27017/apwDB');
 
-addUser();
-async function addUser(){
+//addUser("frank",17,"piecake@outlook.mail");
+async function addUser(username,userId,userEmail){
         //adding a new scenario to the DB
         try{
         const user = await users.create({
-            id: 1,
-            name: "Alexander John Kohanik",
-            email: "kohani15@students.rowan.edu"
+            id: userId,
+            name: username,
+            email: userEmail
         });
         console.log(user);
     } catch (err) {
@@ -28,7 +28,7 @@ async function addUser(){
     }
 }
 
-module.exports = addUser();
+module.exports = addUser;
 
 
 
