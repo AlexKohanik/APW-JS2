@@ -33,15 +33,15 @@ async function findAllScene(){
     try{
         const allScene = await scenarios.find();
         console.log(allScene);
-        document.getElementById("text").textContent = allScene;
-        //return allScene;
+        //document.getElementById("text").textContent = allScene;
+        return allScene;
     } catch (err){
         console.log(err.message);
     }
     
 }
 
-window.onload = findAllScene("Testinig");
+//window.onload = findAllScene("Testinig");
 
 //module.exports = findScene;
 module.exports = findAllScene;

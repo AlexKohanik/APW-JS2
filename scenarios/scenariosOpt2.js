@@ -17,13 +17,13 @@ mongoose.connect('mongodb://127.0.0.1:27017/apwDB');
 //findScene() function is expendable, you can change up values in the query to obtain different results.
 
 
-async function findScene(sceneID){
+async function findScenePrompt2(sceneID){
     try{
             //finding scenario with id field
             const scene = await scenarios.where("id")
                 .equals(sceneID);
-            console.log(scene[0].prompt);
-            return scene[0].prompt;
+            console.log(scene[0].options.prompt2);
+            return scene[0].options.prompt2;
         }catch (err){
             console.log(err.message);
         }
@@ -42,6 +42,8 @@ async function findAllScene(){
 }
 */
 
+//findScenePrompt1(1);
 
-module.exports = findScene;
+
+module.exports = findScenePrompt2;
 //module.exports = findAllScene;
