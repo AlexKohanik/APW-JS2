@@ -6,14 +6,23 @@ var express = require("express"),
     passportLocalMongoose = 
         require("passport-local-mongoose") 
 
-
+//functions - AlexK
+//findPromptOpt2ById() pass in id as param, will return that scenes second option for user
+//findPromptOptById() pass in id as param, will return that scenes first option for the user
+//findUser() pass in a users id as param, will return that users username
+//findScene() pass in a scenes id as param, will return that scenes prompt aka the text displayed to the user.
 const findPromptOpt2ById = require("./alexK_repo/scenarios/scenariosOpt2");
 const findPromptOptById = require("./alexK_repo/scenarios/scenariosOpt");
 const findUser = require("./alexK_repo/users/usersFind");
 const findScene = require("./alexK_repo/scenarios/scenariosFind");
+
 const ejs = require("ejs");
 const User = require("./model/User");
 var app = express();
+
+var path = require('path');
+//app.use(express.static(path.join(__dirname, 'public'))); //trying to apply the styles.css 
+
   
 mongoose.connect("mongodb://127.0.0.1:27017/apwDB");
   
@@ -56,18 +65,28 @@ app.get("/leaderboard", function (req, res) {
   res.render("leaderboard");
 });
 
-// Showing game page
+// Showing game page       //Alex K changes comments in this section April 20th, 2023
 app.get("/game", async function (req, res) {
     const data = {
        title: await findScene(1),
        user: await findUser(1),
        prompt1: await findPromptOptById(1),
-       prompt2: await findPromptOpt2ById(1)
-    };
+       prompt2: await findPromptOpt2ById(1),
+       //title2: await findScene(2),
+       //promtp21: await findPromptOptById(2),
+       //prompt22: await findPromptOpt2ById(2)
+    }; // ----------testing different ways to make the buttons function.
+    //const test1 = document.addEventListener("prompt1", onclick, true);
+    const data2 = {
+      title2: await findScene(2),
+      prompt21: await findPromptOptById(2),
+      prompt22: await findPromptOpt2ById(2)
+     };
 
-  res.render("game", data);
+  res.render("game", data); //if I try to pass data2 in it crashes the site ***BE AWARE.
 });
-  
+
+
 // Handling user signup
 app.post("/register", async (req, res) => {
     const user = await User.create({
