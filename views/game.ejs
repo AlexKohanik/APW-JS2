@@ -1,0 +1,49 @@
+<!---added HTML doctype in a testing attempt, site still works fine and gives more structure to help test.-->
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <!---<link rel="stylesheet" type="text/css"   href="/stylesheets/style.css"> stylesheets wont load, need to fix, for now embedded--->
+      <title>FABA The Game</title>
+   </head>
+   <body style="background-image: url(https://i.pinimg.com/originals/d5/60/44/d56044a5b5f62df707da4823ee84b2f4.jpg); align-content: center;" >
+      <img id="gameImage" src="https://www.gamespot.com/a/uploads/original/536/5360430/3060670-the_witcher_3_wild_hunt_blood_and_wine_toussaint_is_full_of_places_just_waiting_to_be_discovered_rgb.jpg" style="display: block; margin-left: auto; margin-right: auto; width: 40%;"></img>
+      <h1 style="text-align: center; border: 3px solid green;">FABA The Game</h1>
+      <h2 style="text-align: center; background-color: lightsteelblue;">Welcome to FABA, <%= user %> </h2>
+      <h3 style="background-color: lightsteelblue;" name="sceneText" id="sceneText" style="text-align: center;">Prompt: <%= title %></h3>
+      <div style="text-align: center; background-color: lightsteelblue; height: 40vh;">
+         <button name="prompt1" id="prompt1" style="background-color: blanchedalmond; margin: auto; width: 50%; border: 3px solid green; padding: 20px 0; text-align: center;" onclick="correct();"><%= prompt1 %></button>
+         <button name="prompt2" id="prompt2" style="background-color: blanchedalmond; margin: auto; width: 50%; border: 3px solid green; padding: 20px 0; text-align: center;" onclick="wrong1()"><%= prompt2 %></button>
+      </div>
+      <script> 
+         var gameState = {Level1: false, Level2: false};
+         
+         async function correct(){
+         var gameState = {Level1: false, Level2: false}; 
+            if(gameState.Level1 === false){
+                document.getElementById("prompt1").innerHTML="<%= prompt21 %>";
+                document.getElementById("sceneText").innerHTML="<%= title2 %>";
+                document.getElementById("prompt2").innerHTML="<%= prompt22 %>";
+                document.getElementById("gameImage").src="https://www.oxpal.com/wp-content/uploads/2014/07/character_medieval_tavern_keeper_big.jpg";
+                alert("Correct choice.");
+                return gameState.Level1 = true;
+                console.log(gameState);
+            } else if(gameState.Level1 === true){
+                document.getElementsById("prompt1").innerHTML="<%= prompt31 %>";
+                document.getElementsById("sceneText").innerHTML="<%= title3 %>";
+                document.getElementsById("prompt2").innerHTML="<%= prompt32 %>";
+            } else {
+                alert('YOU LOSE RETRY...');
+            }
+         }
+         
+         async function wrong1(){
+         alert('YOU LOSE RETRY...');   //need to redirect back to start of game.
+         }
+         
+      </script>
+      </div>
+   </body>
+</html>
