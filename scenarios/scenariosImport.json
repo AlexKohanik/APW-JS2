@@ -1,10 +1,10 @@
 [
     {
        "id":1,
-       "prompt":"This is level 1",
+       "prompt":"You wake up in a dimly lit bedroom on the second level of an old tavern. Your head is pounding and your memory is foggy. You sit up and notice a note on the table next to you. The note reads…Welcome to the Eastern Mountain Pass Tavern. We found you outside on the road and brought you inside last night. Your belongings can be found downstairs. You look around and the tavern is empty except for the bartender, who is polishing a glass behind the bar. You have two options:",
        "options":{
-             "prompt1":"(a) to runaway",
-             "prompt2":"(f) to fight"
+             "prompt1":"Ask the bartender for information about the town",
+             "prompt2":"Head to the back of the tavern to retrieve your belongings"
       }
     },
     {
