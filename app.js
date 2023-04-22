@@ -72,18 +72,16 @@ app.get("/game", async function (req, res) {
        user: await findUser(1),
        prompt1: await findPromptOptById(1),
        prompt2: await findPromptOpt2ById(1),
-       //title2: await findScene(2),
-       //promtp21: await findPromptOptById(2),
-       //prompt22: await findPromptOpt2ById(2)
-    }; // ----------testing different ways to make the buttons function.
-    //const test1 = document.addEventListener("prompt1", onclick, true);
-    const data2 = {
-      title2: await findScene(2),
+       title2: await findScene(2),
       prompt21: await findPromptOptById(2),
-      prompt22: await findPromptOpt2ById(2)
-     };
+      prompt22: await findPromptOpt2ById(2),
+      title3: await findScene(3),
+      prompt31: await findPromptOptById(3),
+      prompt32: await findPromptOpt2ById(3)
+    }; // ----------testing different ways to make the buttons function. Passing in a few scenes right now...
 
-  res.render("game", data); //if I try to pass data2 in it crashes the site ***BE AWARE.
+  res.render("game", data); 
+
 });
 
 
