@@ -22,7 +22,7 @@ async function findScene(sceneID){
             //finding scenario with id field
             const scene = await scenarios.where("id")
                 .equals(sceneID);
-            console.log(scene[0].prompt);
+            console.log(`SCENE NUMBER: ${sceneID} loaded in.`);
             return scene[0].prompt;
         }catch (err){
             console.log(err.message);
