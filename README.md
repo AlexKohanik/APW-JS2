@@ -23,7 +23,8 @@ Run 'npm install' afterwards to confirm all are up to date.
 -updated scenariosAdd.js the sceneAddAll() function stems from the scenariosAdd.js file. It is required in the app.js file, and on boot will remove all documents from the usesr scenarios in apwDB, and add all of the scenarios that are within the function in the scenariosAdd.js file. 
 
 see video below for demo of game functionality as of todays changes - Alex Kohanik
-https://clipchamp.com/watch/4imAt8L8PT5
+![FABAgif](https://user-images.githubusercontent.com/118318185/233880666-3ded940b-5214-4025-8980-b58864be10d7.gif)
+
 
 (04/19-22/2023) entries --------------------------------------------------------
 -Implemented gameState tracking on the game.ejs page. Implemented onclick for buttons associated with page to execute and function the game itself. (Need to go back over & use post for this). 
