@@ -15,6 +15,7 @@ const findPromptOpt2ById = require("./alexK_repo/scenarios/scenariosOpt2");
 const findPromptOptById = require("./alexK_repo/scenarios/scenariosOpt");
 const findUser = require("./alexK_repo/users/usersFind");
 const findScene = require("./alexK_repo/scenarios/scenariosFind");
+const sceneAddAll = require("./alexK_repo/scenarios/scenariosAdd");
 
 const ejs = require("ejs");
 const User = require("./model/User");
@@ -25,6 +26,8 @@ var path = require('path');
 
   
 mongoose.connect("mongodb://127.0.0.1:27017/apwDB");
+
+sceneAddAll(); // Removes all Scenes from users DB, then adds them. Does this whenever app.js is ran. 
   
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -68,17 +71,33 @@ app.get("/leaderboard", function (req, res) {
 // Showing game page       //Alex K changes comments in this section April 20th, 2023
 app.get("/game", async function (req, res) {
     const data = {
-       title: await findScene(1),
+       //USER
        user: await findUser(1),
+       //SCENE 1
+       title: await findScene(1),
        prompt1: await findPromptOptById(1),
        prompt2: await findPromptOpt2ById(1),
-       title2: await findScene(2),
-      prompt21: await findPromptOptById(2),
-      prompt22: await findPromptOpt2ById(2),
-      title3: await findScene(3),
-      prompt31: await findPromptOptById(3),
-      prompt32: await findPromptOpt2ById(3)
-    }; // ----------testing different ways to make the buttons function. Passing in a few scenes right now...
+      //SCENE 2
+       title2: await findScene(11),
+      prompt21: await findPromptOptById(11),
+      prompt22: await findPromptOpt2ById(11),
+      //SCENE 3
+      title3: await findScene(12),
+      prompt31: await findPromptOptById(12),
+      prompt32: await findPromptOpt2ById(12),
+      //SCENE 4
+      title4: await findScene(21),
+      prompt41: await findPromptOptById(21),
+      prompt42: await findPromptOpt2ById(21),
+      //SCENE 5
+      title5: await findScene(22),
+      prompt51: await findPromptOptById(22),
+      prompt52: await findPromptOpt2ById(22),
+      //SCENE 6
+      title6: await findScene(71),
+      prompt61: await findPromptOptById(71),
+      prompt62: await findPromptOpt2ById(71)
+    }; //edit params passed into functions to change which scenes are loaded upon /game
 
   res.render("game", data); 
 
