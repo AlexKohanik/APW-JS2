@@ -16,6 +16,7 @@ const findPromptOptById = require("./alexK_repo/scenarios/scenariosOpt");
 const findUser = require("./alexK_repo/users/usersFind");
 const findScene = require("./alexK_repo/scenarios/scenariosFind");
 const sceneAddAll = require("./alexK_repo/scenarios/scenariosAdd");
+const populateUserState = require('./alexK_repo/gamePlay/gameStatePush');
 
 const ejs = require("ejs");
 const User = require("./model/User");
@@ -27,7 +28,7 @@ var path = require('path');
   
 mongoose.connect("mongodb://127.0.0.1:27017/apwDB");
 
-sceneAddAll(); // Removes all Scenes from users DB, then adds them. Does this whenever app.js is ran. 
+sceneAddAll(); // Removes all Scenes from users DB, then adds them. Does this whenever app.js is ran.
   
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -99,7 +100,7 @@ app.get("/game", async function (req, res) {
       prompt62: await findPromptOpt2ById(71)
     }; //edit params passed into functions to change which scenes are loaded upon /game
 
-  res.render("game", data); 
+  res.render("game", data);
 
 });
 
@@ -127,6 +128,7 @@ app.post("/login", async function(req, res){
         if (user) {
           //check if password matches
           const result = req.body.password === user.password;
+          await populateUserState(user._id);  //When a User logs in, their primary key becomes the cooresponding key of their gameState object.
           if (result) {
             res.render("secret");
           } else {
