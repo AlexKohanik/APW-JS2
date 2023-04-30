@@ -2,7 +2,7 @@
 
 
 //THIS DOCUMENT CONTAINS:
-//    -The "findScene()" function which can be used to find a scenario
+//    -The "findScenePrompt2()" function which can be used to find a scenarios second prompt for the user to make the second choice.
 //      ** you can change around this function to return the entire object from mongo or just one field, right now it is set to return the prompt.
 //
 // *** see "scenarios.js" for layout of scenarios schema & collection
@@ -14,7 +14,7 @@ const scenarios = require('./scenarios');
 //connecting to DB
 mongoose.connect('mongodb://127.0.0.1:27017/apwDB');
 
-//findScene() function is expendable, you can change up values in the query to obtain different results.
+//findScenePrompt2() function is expendable, you can change up values in the query to obtain different results.
 
 
 async function findScenePrompt2(sceneID){
@@ -29,21 +29,5 @@ async function findScenePrompt2(sceneID){
         }
 }
 
-//exporting find scene function to be used elsewhere
-/*
-async function findAllScene(){
-    try{
-        const allScene = await scenarios.find();
-        console.log(allScene);
-        return allScene;
-    } catch (err){
-        console.log(err.message);
-    }
-}
-*/
-
-//findScenePrompt1(1);
-
-
+//export
 module.exports = findScenePrompt2;
-//module.exports = findAllScene;
