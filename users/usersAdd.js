@@ -28,6 +28,7 @@ async function addUser(username,userId,userEmail){
     }
 }
 
+//exporting
 module.exports = addUser;
 
 
